@@ -1,7 +1,20 @@
-import { Button, Typography } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
 import { Settings, Add } from "@mui/icons-material";
 
 function App() {
+
+  const BlueButton = styled(Button)({
+    backgroundColor : 'skyblue',
+    color : "#888",
+    margin : 5,
+    "&:hover" : { 
+      backgroundColor : "lightblue"
+    },
+    "&:disabled" : {
+      backgroundColor : "gray",
+      color:"white"
+    }
+  })
   return (
     <div className="App">
       <Button variant="text">TextJS</Button>
@@ -40,7 +53,7 @@ function App() {
         }
       }}>My unique Button</Button>
 
-      
+      <BlueButton>My button</BlueButton>
     </div>
   );
 }
