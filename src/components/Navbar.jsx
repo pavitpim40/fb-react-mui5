@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -5,12 +6,15 @@ import {
   InputBase,
   Badge,
   Avatar,
+  Menu,
+  MenuItem,
   styled,
 } from "@mui/material";
 import SpaIcon from "@mui/icons-material/Spa";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -67,11 +71,12 @@ const Navbar = () => {
           <Avatar
             style={{ width: 30, height: 30 }}
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            onClick={(e) => setOpen(true)}
           />
         </Icons>
 
         {/* Icon - when Mobile Mode */}
-        <UserBox>
+        <UserBox onClick={(e) => setOpen(true)}>
           <Avatar
             style={{ width: 30, height: 30 }}
             src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -79,6 +84,20 @@ const Navbar = () => {
           <Typography variant="span">John</Typography>
         </UserBox>
       </StyledToolbar>
+      <Menu
+        id="basic-menu"
+        open={open}
+        onClose={(e) => setOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem onClick={(e) => setOpen(false)}>Profile</MenuItem>
+        <MenuItem onClick={(e) => setOpen(false)}>My account</MenuItem>
+        <MenuItem onClick={(e) => setOpen(false)}>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
