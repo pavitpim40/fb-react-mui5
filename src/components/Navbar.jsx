@@ -15,6 +15,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
